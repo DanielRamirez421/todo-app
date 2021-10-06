@@ -8,11 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms'
 //ngrx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { todoReducer } from './todos/store/todo.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { appReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     AppRoutingModule,
     TodoModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ todos: todoReducer }),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import * as todoActions from './../store/todos.actions';
+import * as todoActions from './../store/main/todos.actions';
 import { AppState } from './../../app.reducer';
 import { Store } from '@ngrx/store';
 

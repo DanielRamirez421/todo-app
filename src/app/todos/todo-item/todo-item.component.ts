@@ -4,7 +4,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Todo } from '../models/todo.model';
 import { AppState } from './../../app.reducer';
-import * as todoActions from './../store/todos.actions';
+import * as todoActions from './../store/main/todos.actions';
 
 import { Observable } from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -43,6 +43,15 @@ export class TodoItemComponent implements OnInit {
 
   terminarEdicion() {
     this.editando = false;
+
+    if (this.txtInput.invalid) { return; }
+    if (this.txtInput.value === this.todo.texto) { return; }
+
+    this.store.dispatch(todoActions.editar({ id: this.todo.id, texto: this.txtInput.value }));
+  }
+
+  eliminar() {
+    this.store.dispatch(todoActions.eliminar({ id: this.todo.id}));
   }
 
 }
