@@ -13,6 +13,7 @@ const _todoReducer = createReducer(
   estadoInicial,
   on(todoActions.crear, (state, { texto }) => [...state, new Todo(texto)]),
   on(todoActions.eliminar, (state, { id }) => state.filter(todo => todo.id !== id)),
+  on(todoActions.eliminarCompletados, (state) => state.filter(todo => !todo.completado)),
   on(todoActions.editar, (state, { id, texto }) => {
     return state.map(todo => {
       if (todo.id === id) {
