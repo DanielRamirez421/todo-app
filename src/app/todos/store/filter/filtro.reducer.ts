@@ -1,9 +1,13 @@
 import { createReducer, on, Action} from '@ngrx/store';
-import { filtrosValidos } from './filtro.actions';
 import * as filterActions from './filtro.actions';
 
+export enum filtrosValidos {
+  TODOS='todos',
+  COMPLETADOS='completados',
+  PENDIENTES='pendientes',
+};
 
-export const initialState: filtrosValidos = 'todos'
+export const initialState = filtrosValidos.TODOS
 
 const _filtroReducer = createReducer(
   initialState,
@@ -11,6 +15,6 @@ const _filtroReducer = createReducer(
 
 );
 
-export function filtroReducer(state: any | undefined, action: Action) {
+export function filtroReducer(state: filtrosValidos | undefined, action: Action) {
   return _filtroReducer(state, action);
 }
